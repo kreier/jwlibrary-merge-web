@@ -15,6 +15,12 @@
   <img src="https://img.shields.io/badge/TypeScript-React%2018%20+%20Vite-blue?style=for-the-badge&logo=typescript&logoColor=white" alt="Tech Stack" />
 </p>
 
+
+![GitHub License](https://img.shields.io/github/license/JWCow/jwlibrary-merge-web)
+![GitHub Release](https://img.shields.io/github/v/release/kreier/jwlibrary-merge-web)
+[![React 18 + Vite + TS](https://shields.io)](https://react.dev)
+
+
 ---
 
 ## 📌 Table of Contents
