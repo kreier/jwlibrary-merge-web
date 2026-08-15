@@ -8,18 +8,12 @@
   <strong>100% In-Browser & Private tool to merge JW Library (<code>.jwlibrary</code>) backups from iPad, iPhone, Android, and Windows PC.</strong>
 </p>
 
-<p align="center">
-  <a href="https://jwlibrary-merge.mastern8n.cc"><img src="https://img.shields.io/badge/Live%20App-jwlibrary--merge.mastern8n.cc-4a6da7?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Live App" /></a>
-  <a href="https://github.com/JWCow/jwlibrary-merge-web/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-MIT-emerald?style=for-the-badge" alt="License" /></a>
-  <img src="https://img.shields.io/badge/Privacy-100%25%20Client--Side%20WASM-success?style=for-the-badge&logo=webassembly&logoColor=white" alt="100% In-Browser" />
-  <img src="https://img.shields.io/badge/TypeScript-React%2018%20+%20Vite-blue?style=for-the-badge&logo=typescript&logoColor=white" alt="Tech Stack" />
-</p>
-
-
 ![GitHub License](https://img.shields.io/github/license/JWCow/jwlibrary-merge-web)
+![React 18](https://img.shields.io/badge/React-18-20232A?logo=react&logoColor=61DAFB)
+![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Privacy](https://img.shields.io/badge/Privacy-100%25_Client--Side_WASM-2ea44f?logo=webassembly&logoColor=white)
 ![GitHub Release](https://img.shields.io/github/v/release/kreier/jwlibrary-merge-web)
-[![React 18 + Vite + TS](https://shields.io)](https://react.dev)
-
 
 ---
 
