@@ -8,12 +8,14 @@
   <strong>100% In-Browser & Private tool to merge JW Library (<code>.jwlibrary</code>) backups from iPad, iPhone, Android, and Windows PC.</strong>
 </p>
 
-![GitHub License](https://img.shields.io/github/license/JWCow/jwlibrary-merge-web)
 ![React 18](https://img.shields.io/badge/React-18-20232A?logo=react&logoColor=61DAFB)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
 ![Privacy](https://img.shields.io/badge/Privacy-100%25_Client--Side_WASM-2ea44f?logo=webassembly&logoColor=white)
+
+![GitHub License](https://img.shields.io/github/license/JWCow/jwlibrary-merge-web)
 ![GitHub Release](https://img.shields.io/github/v/release/kreier/jwlibrary-merge-web)
+[![CI Build & Typecheck](https://github.com/kreier/jwlibrary-merge-web/actions/workflows/ci.yml/badge.svg)](https://github.com/kreier/jwlibrary-merge-web/actions/workflows/ci.yml)
 
 ---
 
