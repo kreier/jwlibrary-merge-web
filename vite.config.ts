@@ -5,9 +5,6 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   base: '/jwlibrary-merge-web/',
   plugins: [react()],
-  optimizeDeps: {
-    exclude: ['sql.js']
-  },
   server: {
     port: 5173
   }
