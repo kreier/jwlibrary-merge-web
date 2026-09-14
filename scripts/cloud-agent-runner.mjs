@@ -35,7 +35,7 @@ const fullPrompt = [
   TASK_PROMPT ? `\n## Details / Specification:\n${TASK_PROMPT}` : '',
   `\n## Instructions:`,
   `1. Inspect the codebase to understand the requirements and existing patterns.`,
-  `2. Make only the necessary surgical changes to satisfy the task.`,
+  `2. Make only the necessary surgical changes to satisfy the task by editing the relevant repository files directly (e.g. documentation, source code). Do not create or push git tags, releases, or commits to remotes — the outer daemon handles staging and PR creation.`,
   `3. Run tests using \`npm test\` and \`npm run build\` to verify your changes.`,
   `4. If any tests or build checks fail, fix the errors and re-test.`,
   `5. Once everything passes cleanly, write a concise markdown summary of changes and verification results to \`.agent_pr_summary.md\`.`
@@ -94,19 +94,40 @@ async function main() {
 
   // Engine Priority: 1. AGY (Antigravity) -> 2. Claude Code
   if (agyAvailable) {
-    console.log('🤖 [Agent Runner] Engine: Antigravity CLI (agy) — $25/mo Google Subscription');
+    console.log('🤖 [Agent Runner] Engine: Antigravity CLI (agy) — Gemini 3.8 Flash');
     fs.writeFileSync(path.resolve(ROOT_DIR, '.agent_engine'), 'antigravity', 'utf8');
     
-    const res = spawnSync('agy', ['--dangerously-skip-permissions', '--disable-slash-commands', '-p', fullPrompt], {
+    // Spill task prompt to file to avoid Windows cmd.exe argument length & whitespace splitting
+    const promptFile = path.resolve(ROOT_DIR, '.agent_task_prompt.md');
+    fs.writeFileSync(promptFile, fullPrompt, 'utf8');
+
+    const env = { ...process.env, GEMINI_MODEL: 'gemini-3.8-flash' };
+    Object.keys(env).forEach(k => {
+      if (k.startsWith('ANTIGRAVITY_')) delete env[k];
+    });
+
+    const agyDirective = `Read and execute task instructions in .agent_task_prompt.md in full. Inspect the codebase, make surgical edits, run tests, and write summary to .agent_pr_summary.md.`;
+
+    const res = spawnSync('agy', [
+      '--dangerously-skip-permissions',
+      '--disable-slash-commands',
+      '--model', 'gemini-3.8-flash',
+      '--effort', 'high',
+      '--print-timeout', '15m',
+      '-p', agyDirective
+    ], {
       cwd: ROOT_DIR,
+      env,
       stdio: 'inherit',
       encoding: 'utf8',
-      shell: true,
+      shell: false,
       timeout: 15 * 60 * 1000
     });
 
     if (res.error || (res.status !== 0 && res.status !== null)) {
-      console.warn(`[Agent Runner] agy exited with status ${res.status}: ${res.error?.message || ''}`);
+      const errMsg = `agy exited with status ${res.status}: ${res.error?.message || ''}`;
+      console.error(`[Agent Runner] ${errMsg}`);
+      throw new Error(errMsg);
     }
   } else if (claudeAvailable) {
     console.log('🤖 [Agent Runner] Engine: Claude Code CLI (claude) — $20/mo Anthropic Subscription');
